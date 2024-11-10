@@ -200,7 +200,7 @@ public:
                 cin >> nam1 >> nam2;
                 cout << "Input level first and second player(with space): " << endl;
                 cin >> lev1 >> lev2;
-                cout << "Input firts player wins and second player experience with(days(1),month(2),years(3)): " << endl;
+                cout << "Input firts player wins and second player experience with(days(1),month(2),years(3))(with space): " << endl;
                 cin >> score>>exper>> yrdymth;
                 if(yrdymth>3 && yrdymth<1){ throw invalid_argument("Input from 1 to 3"); }
                 (yrdymth == 1) ? player2.SetY_D_M("days") : (yrdymth == 2) ? player2.SetY_D_M("months") : player2.SetY_D_M("years");
