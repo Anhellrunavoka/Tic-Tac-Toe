@@ -6,51 +6,47 @@ using namespace std;
 class Player {
 protected:
     string name;
+    char symbol;
+    int level;
 public:
-    Player(string nam):name(nam){}
+    Player(string nam, char sym, int level):name(nam), symbol(sym), level(level) {}
     string getName() const { return name; }
-    void setName(const string& nam) { name = nam; }
-    virtual friend ostream& operator<<(ostream& output, const Player2& play) {
-        output << play.getName() << ":" << " " << "," << 0;
-        return output;
-    }
-};
-class Player1 :public Player {
-    char symbol;
-    int level;
-public:
-    Player1():Player(" "), symbol(), level(0) {}
-    Player1(string name,char sym, int level) :Player(name), symbol(sym),level(level) {}
     char getSymbol() const { return symbol; }
-    int getLVL() const { return level; }
-    void setALL(const string& nam, const char& sym,const int& lvl) {
-        this->name = nam;      
-        this->symbol = sym;    
-        this->level = lvl;
-    }
-    virtual friend ostream& operator<<(ostream& output, const Player1& play) {
-        output << play.getName() << ":" << play.getSymbol() << "," << play.getLVL();
-        return output;
-    }
-};
-class Player2 :public Player {
-    char symbol;
-    int level;
-public:
-    Player2() :Player(" "), symbol(), level(0) {}
-    Player2(string name, char sym,int level) :Player(name), symbol(sym),level(level) {}
-    char getSymbol() const { return symbol; }
-    int getLVL() const { return level; }
+    virtual int getLVL() const { return level; }
     void setALL(const string& nam, const char& sym, const int& lvl) {
         this->name = nam;
         this->symbol = sym;
         this->level = lvl;
     }
-    virtual friend ostream& operator<<(ostream& output, const Player2& play) {
+    friend ostream& operator<<(ostream& output, const Player& play) {
+        output << play.getName() << ":" << " " << "," << 0;
+        return output;
+    }
+};
+class Player1 :public Player {
+public:
+    Player1():Player(" ",' ',0){}
+    Player1(string name,char sym, int level) :Player(name,sym,level){}
+    friend ostream& operator<<(ostream& output, const Player1& play) {
         output << play.getName() << ":" << play.getSymbol() << "," << play.getLVL();
         return output;
     }
 };
+class Player2 :public Player {
+public:
+    Player2() :Player(" ", ' ', 0){}
+    Player2(string name, char sym,int level) :Player(name, sym, level) {}
+    friend ostream& operator<<(ostream& output, const Player2& play) {
+        output << play.getName() << ":" << play.getSymbol() << "," << play.getLVL();
+        return output;
+    }
+};
+template <typename T, typename T2>
+void setPlayerDani(T& player, const string& name, const char& symbol, const int& level,
+    T2& player2, const string& name2, const char& symbol2, const int& level2) {
+    player.setALL(name, symbol, level);
+    player2.setALL(name2, symbol2, level2);
+}
 void print_pole(short krestik, short nolik, int pole[3][3]) {
     cout << "\t\tTic tac toe" << endl;
     cout << "\t\t-----------" << endl;
@@ -99,6 +95,7 @@ void print_results() {
 
     file.close();
 }
+
 void clean_pole(int pole[3][3]){
     for (short i = 0; i < 3; i++) {
         for (short j = 0; j < 3; j++) {
@@ -208,22 +205,10 @@ public:
                         nolik = first_hid;
                     }
                 }
-                if (first_hid == 1 && krestik == 1) {
-                    player1.setALL(nam1, 'X', lev1);
-                    player2.setALL(nam2, 'O', lev2);
-                }
-                else if (first_hid == 1 && nolik == 1) {
-                    player1.setALL(nam1, 'O', lev1);
-                    player2.setALL(nam2, 'X', lev2);
-                }
-                else if (first_hid == 2 && krestik == 2) {
-                    player1.setALL(nam1, 'O', lev1);
-                    player2.setALL(nam2, 'X', lev2);
-                }
-                else {
-                    player1.setALL(nam1, 'X', lev1);
-                    player2.setALL(nam2, 'O', lev2);
-                }
+                (first_hid == 1 && krestik == 1) ? setPlayerDani(player1, nam1, 'X', lev1, player2, nam2, 'O', lev2) :
+                    (first_hid == 1 && nolik == 1) ? setPlayerDani(player1, nam1, 'O', lev1, player2, nam2, 'X', lev2) :
+                    (first_hid == 2 && krestik == 2) ? setPlayerDani(player1, nam1, 'O', lev1, player2, nam2, 'X', lev2) :
+                    setPlayerDani(player1, nam1, 'X', lev1, player2, nam2, 'O', lev2);
                 cout << player1 << endl << player2 << endl;
                 do {
                     do {
