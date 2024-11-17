@@ -13,3 +13,18 @@ Player 2: kir, Level: 4, Duration: 6 days, Symbol: O
 Game Duration: 28.2916 seconds
 Win: kir
 --------------------------------------
+Player 1: w, Level: 1, Score: 2, Symbol: X
+Player 2: e, Level: 4, Duration: 5 days, Symbol: O
+Game Duration: 23.7176 seconds
+Win: e
+--------------------------------------
+Player 1: w, Level: 3, Score: 3, Symbol: O
+Player 2: e, Level: 5, Duration: 5 days, Symbol: X
+Game Duration: 20.2639 seconds
+Win: Draw
+--------------------------------------
+Player 1: r, Level: 2, Score: 1, Symbol: O
+Player 2: t, Level: 4, Duration: 3 months, Symbol: X
+Game Duration: 16.5935 seconds
+Win: t
+--------------------------------------

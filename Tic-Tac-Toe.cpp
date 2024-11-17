@@ -122,7 +122,7 @@ void clean_pole(int pole[3][3]){
         }   
     }
 }
-void save(const Player1& player1, const Player2& player2, double time, int win, bool ans) {
+void save(const Player1& player1, const Player2& player2, double time, int win, bool& ans) {
     int save;
     cout << endl << "Do you want save results? (1)Yes (2)No ";
     cin >> save;
