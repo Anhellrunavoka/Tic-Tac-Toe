@@ -8,3 +8,8 @@ Player 2: Tom, Level: 5, Duration: 3 months, Symbol: X
 Game Duration: 105.931 seconds
 Win: Anne
 --------------------------------------
+Player 1: sam, Level: 2, Score: 3, Symbol: X
+Player 2: kir, Level: 4, Duration: 6 days, Symbol: O
+Game Duration: 28.2916 seconds
+Win: kir
+--------------------------------------

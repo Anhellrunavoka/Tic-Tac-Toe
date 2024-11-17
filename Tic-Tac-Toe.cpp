@@ -122,7 +122,7 @@ void clean_pole(int pole[3][3]){
         }   
     }
 }
-void save(const Player1& player1, const Player2& player2, double time, int win) {
+void save(const Player1& player1, const Player2& player2, double time, int win, bool ans) {
     int save;
     cout << endl << "Do you want save results? (1)Yes (2)No ";
     cin >> save;
@@ -130,6 +130,7 @@ void save(const Player1& player1, const Player2& player2, double time, int win) 
     if (save == 1) {
         save_res(player1, player2, time, win);
         cout << "Results saved";
+        ans = true;
     }
     else { cout << "Results were not saved"; }
 }
@@ -203,6 +204,7 @@ public:
         }
     }
     void play() {
+        bool ans = false;
         auto start = chrono::steady_clock::now();
         try {
             do {
@@ -277,18 +279,22 @@ public:
                     cout << "Playing with same players? (1)Yes (2)No";
                     cin >> same;
                     if (same < 1 || same>2) throw - 1;
-                    if(same==2) save(player1, player2, time, win);
+                    if (same) { 
+                        save(player1, player2, time, win,ans);
+                    };
                     clean_pole(pole);
                 } while (same == 1);
-                cout << "Do you want play again? (1)Yes (2)No";
+                cout<<endl << "Do you want play again? (1)Yes (2)No";
                 cin >> again;
                 if (again < 1 || again>2) throw - 1;
                 if (again == 2) {
-                    save(player1, player2, time, win);
-                    break;
+                    if (ans == false){
+                        save(player1, player2, time, win, ans);
+                        break;
+                    }
+                    else{ break; }
                 }
             } while (again == 1);
-            save(player1, player2, time, win);
         }
         catch (int) {
             cerr << "Input 1 or 2";
