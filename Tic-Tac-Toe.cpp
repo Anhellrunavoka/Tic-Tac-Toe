@@ -89,8 +89,8 @@ void save_res(const Player1 &player1, const Player2& player2, double time,int wi
             return;
         }
         (win == 1) ? win_name = player1.getName() : (win == 2) ? win_name = player2.getName() : win_name = "Draw";
-        file << "Player 1: " << player1.getName() << ", Level: " << player1.getLVL() << ", Symbol: " << player1.getSymbol() << endl;
-        file << "Player 2: " << player2.getName() << ", Level: " << player2.getLVL() << ", Symbol: " << player2.getSymbol() << endl;
+        file << "Player 1: " << player1.getName() << ", Level: " << player1.getLVL() << "Score: " << player1.getScore() << ", Symbol: " << player1.getSymbol() << endl;
+        file << "Player 2: " << player2.getName() << ", Level: " << player2.getLVL() << "Duration: " << player2.getExp()<<" "<< player2.getY_D_M() << ", Symbol: " << player2.getSymbol() << endl;
         file << "Game Duration: " << time << " seconds" << endl;
         file << "Win: " << win_name << endl;
         file << "--------------------------------------" << endl;
