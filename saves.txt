@@ -1,5 +1,10 @@
-Player 1: Anne, Level: 2Score: 4, Symbol: X
-Player 2: Tom, Level: 5Duration: 3 months, Symbol: O
+Player 1: Anne, Level: 2, Score: 4, Symbol: X
+Player 2: Tom, Level: 5, Duration: 3 months, Symbol: O
 Game Duration: 146.155 seconds
 Win: Tom
+--------------------------------------
+Player 1: Anne, Level: 2, Score: 4, Symbol: O
+Player 2: Tom, Level: 5, Duration: 3 months, Symbol: X
+Game Duration: 105.931 seconds
+Win: Anne
 --------------------------------------

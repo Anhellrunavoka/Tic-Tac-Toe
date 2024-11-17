@@ -122,6 +122,17 @@ void clean_pole(int pole[3][3]){
         }   
     }
 }
+void save(const Player1& player1, const Player2& player2, double time, int win) {
+    int save;
+    cout << endl << "Do you want save results? (1)Yes (2)No ";
+    cin >> save;
+    if (save < 1 || save>2) throw - 1;
+    if (save == 1) {
+        save_res(player1, player2, time, win);
+        cout << "Results saved";
+    }
+    else { cout << "Results were not saved"; }
+}
 class Game {
     int pole[3][3] = { 0 }, first_hid = 1 + rand() % 2;
     Player1 player1;
@@ -266,22 +277,18 @@ public:
                     cout << "Playing with same players? (1)Yes (2)No";
                     cin >> same;
                     if (same < 1 || same>2) throw - 1;
+                    if(same==2) save(player1, player2, time, win);
                     clean_pole(pole);
                 } while (same == 1);
                 cout << "Do you want play again? (1)Yes (2)No";
                 cin >> again;
                 if (again < 1 || again>2) throw - 1;
-                if (again == 2) break;
+                if (again == 2) {
+                    save(player1, player2, time, win);
+                    break;
+                }
             } while (again == 1);
-            int save;
-            cout << endl << "Do you want save results? (1)Yes (2)No ";
-            cin >> save;
-            if (save < 1 || save>2) throw - 1;
-            if (save == 1) {
-                save_res(player1,player2, time,win);
-                cout << "Results saved";
-            }
-            else { cout << "Results were not saved"; }
+            save(player1, player2, time, win);
         }
         catch (int) {
             cerr << "Input 1 or 2";
